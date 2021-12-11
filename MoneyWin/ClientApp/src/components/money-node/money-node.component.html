@@ -1,0 +1,61 @@
+<div class="msla-node-margin">
+  <div>
+    <div class="msla-card-caption msla-transform-interactive-zone">
+      <div class="msla-card msla-monitoring-card max-width-card">
+        <div class="msla-card-header msla-monitoring-card-header"
+             [style.background-color]="node.backgroundColor">
+          <div class="msla-card-title-group" role="button" (click)="toggleContent()">
+            <div class="msla-card-header-logo" [style.background-color]="node.primaryColor">
+              <i class="msla-card-header-icon {{node.icon}}"></i>
+            </div>
+            <a aria-expanded="false" class="msla-card-header-title-view" tabindex="-1" href="javascript:void(0)"
+               draggable="false" role="button">
+              <div class="msla-card-title">{{node.name}}</div>
+            </a></div>
+          <div class="msla-card-title-button-group" tabindex="0">
+            <div class="msla-monitoring-card-duration" role="region" title="0 seconds"
+                 [style.background-color]="node.secondaryColor">
+              <span *ngIf="node.isComputing" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              {{node.total}}
+            </div>
+          </div>
+        </div>
+        <div class="msla-card-body" *ngIf="showContent">
+          <div class="msla-parameter-group ">
+            <div class="msla-input-parameters-body">
+              <div class="msla-input-parameters-list">
+                <div class="row">
+                  <div class="col col-offset-12 ">
+                    <money-node-field *ngFor="let input of node.inputs" [field]="input" (onFieldUpdated)="node.notify()"></money-node-field>
+                  </div>
+                  <div class="col col-offset-12" *ngIf="node.labels.length>0">
+                    <money-node-field *ngFor="let input of node.labels" [field]="input" ></money-node-field>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="msla-card-children" *ngIf="hasChilds">
+      <div class="msla-card-container">
+        <div class="msla-card-flex msla-transform-interactive-zone">
+          <div class="msla-step-connector-arrow-down">
+            <div>
+              <div
+                style="background: url(&quot;data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iNDAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDEzIDMwIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyMCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPi5zdDB7ZmlsbDpub25lO3N0cm9rZTojNUI1QjVDO3N0cm9rZS13aWR0aDoyO3N0cm9rZS1taXRlcmxpbWl0OjEwO30NCgkuc3Qxe2ZpbGw6IzVCNUI1Qzt9PC9zdHlsZT4NCiA8cmVjdCB4PSI5IiB3aWR0aD0iMiIgaGVpZ2h0PSIzNy45NzQiIGZpbGw9IiM1MTUxNTEiIHN0cm9rZS13aWR0aD0iNC41MDYyIi8+DQogPHBvbHlnb24gdHJhbnNmb3JtPSJtYXRyaXgoMS4xNzg1IDAgMCAxLjE3ODUgLS42MDY5MiAyMy41NDQpIiBwb2ludHM9IjEuOTI4IDQuMDY1IDguOTk5IDExLjEzNiAxNi4wNzIgNC4wNjUgMTcuNDg2IDUuNDc5IDguOTk5IDEzLjk2NCAwLjUxNSA1LjQ3OSIgZmlsbD0iIzUxNTE1MSIvPg0KPC9zdmc+DQo=&quot;) center center no-repeat;"></div>
+            </div>
+          </div>
+          <div class="msla-card-view-div">
+            <div class="row" [class.childs]="node.outcomes.length>1">
+              <money-node class="col col-offset-12" *ngFor="let child of node.outcomes"
+                          [node]="child"></money-node>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

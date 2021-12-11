@@ -1,0 +1,24 @@
+<div class="msla-input-parameter-item" aria-labelledby="default">
+  <div class="msla-input-parameter">
+    <div class="msla-input-parameter-label">
+      <label class="msla-label" title="{{field.name}}"><span *ngIf="field.isRequired" class="msla-label-required-parameter" aria-label="Required">*</span>{{field.name}}</label>
+    </div>
+    <div>
+      <div class="msla-input-parameter-content">
+        <div class="ms-TextField root-79">
+          <div class="ms-TextField-wrapper wrapper-42">
+            <div class="ms-TextField-fieldGroup fieldGroup-80">
+              <input [type]="field.type" (keyup)="notifyFieldUpdated()"
+
+                     spellcheck="false"
+                     class="ms-TextField-field field-81"
+                     aria-label="Name"
+                     [disabled]="field.isComputed"
+                     [(ngModel)]="field.value">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div id="monitorcontainer" class="msla-container msla-clearfix msla-host-portalfx">
+  <div class="msla-actionpalette">
+    <div class="">
+      <h1>{{userIncomes | currency:'€'}}</h1>
+    </div>
+  </div>
+  <div class="msla-actionpalette">
+    <div class="">
+      <button class="msla-button msla-newstep-button" data-automation-id="action_newstep" (click)="update()">Calculer
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <money-node class="col-{{childColClass}}" *ngFor="let node of nodes" [node]="node"></money-node>
+  </div>
+</div>
+
